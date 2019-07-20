@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/common/masterlayout}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+
+    <div class="booking-request-status">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="">
+                        <div class="modal-dialog">
+                            <div class="modal-content text-center">
+                                <div class="modal-header">
+                                    <i style="color:green;" class="fa fa-4x fa-check-circle"></i>
+                                </div>
+                                <h3 class="modal-title">Congratulation !</h3>
+                                <div class="modal-body"> You Successfully rent the car.Thank you for using our service. We will contact you as soon as possible.</div>
+                                <div class="modal-footer">
+                                    <a th:href="@{/home}"><button type="button" class="btn btn-success">OK</button></a>
+                                </div>
+                            </div> <!-- / .modal-content -->
+                        </div> <!-- / .modal-dialog -->
+                    </div>
+
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.free-estimate-submit-status -->
+
+</th:block>
+
+
+
+
+
+<footer class="footer-area" style="background-image:url(/images/footer-bg.png ); background-color: #ffffff">
+    <footer class="container">
+        <div class="row">
+            <div class="widget-area sidebar-footer-1 col-sm-6 col-md-col-sm-4 col-md-4">
+                <div id="houserent_about_me-2" class="widget widget_houserent_about_me"><div class="widget-title-area"><h3 class="widget-title" style="color: #fca22a">About Us</h3></div>
+
+                    <div class="widget-about-content">
+                        <img th:src="@{/images/footer-logo.png}" alt="About Us">                <p>Renting, also known as hiring or letting, is an agreement where a payment is made for the temporary use of a good, service or property owned by another. A gross lease is when the tenant pays a flat rental amount and the landlord pays for all property charges regularly incurred by the ownership.</p>                <a href='#' class='button'>More</a>            </div><!-- /.widget-content -->
+                </div>                                    </div>
+            <div class="widget-area sidebar-footer-2 col-sm-6 col-md-col-sm-6 col-md-col-sm-4 col-md-4">
+                <div id="houserent_rental_category-3" class="widget widget_houserent_rental_category"><div class="widget-title-area"><h3 class="widget-title" style="color: #fca22a">Place Category</h3></div>                                  <ul>
+                    <li>
+                        Flat for Rent
+                        <a href="#">
+                            Apartments                              </a>
+                    </li>
+                    <li>
+                        Flat for Rent
+                        <a href="#">
+                            Factory                             </a>
+                    </li>
+                    <li>
+                        Flat for Rent
+                        <a href="#">
+                            Family House                                </a>
+                    </li>
+                    <li>
+                        Flat for Rent
+                        <a href="#">
+                            Office                              </a>
+                    </li>
+                    <li>
+                        Flat for Rent
+                        <a href="#">
+                            Sublet                              </a>
+                    </li>
+                    <li>
+                        Flat for Rent
+                        <a href="#">
+                            Ware House                              </a>
+                    </li>
+                </ul>
+                </div>                                    </div>
+
+
+
+        </div><!-- /.container -->
+
+    </footer>
+    <th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>

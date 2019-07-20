@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/common/masterlayout}">
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Title</title>
+        </head>
+        <body>
+            <th:block layout:fragment="content">
+
+
+                <div class="apartment-single-area" th:object="${singleCar}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="corousel-gallery-content">
+                                    <div class="single-rental-thumb">
+                                        <img th:src="${singleCar.image_url}"  alt="">										</div><!-- /.single-rental-thumb -->
+                                </div> <!-- /.corousel-gallery-content -->
+                                <div class="family-apartment-content mobile-extend">
+                                    <div class="tb">
+                                        <div class="tb-cell">
+                                            <h3 class="apartment-title" th:text="${singleCar.name}"></h3>
+                                        </div><!-- /.tb-cell -->
+
+                                    </div><!-- /.tb -->
+                                    <div class="clearfix"></div><!-- /.clearfix -->
+                                    <p class="apartment-description default-gradient-before" th:text="${singleCar.description}">
+                                        <!--                            desc-->
+                                    </p>
+                                    <div class="apartment-detials">
+                                        <h3><strong>Price Details-</strong></h3>
+                                        <ul>
+                                            <li><strong>Rent/day:</strong> <span th:text="${singleCar.price_per_day+' (negotiable)'}"></span></li>
+                                            <li><strong>Service Charge :</strong> <span th:text="${singleCar.service_charge+' (subject to change)'}"></span></li>
+                                            <li><strong>Security Deposit :</strong><span th:text="${singleCar.security_deposit+' (1 weeks’s rent)'}"></span> </li>
+                                            <li><strong>Rent Policy :</strong> <span th:text="${singleCar.rent_policy}"></span></li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="apartment-overview">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h3>Rental Overview</h3>
+                                                <div class="overview">
+                                                    <ul>
+                                                        <li>
+                                                            Location:
+                                                            <span class="pull-right" th:text="${singleCar.address.street+', '+singleCar.address.city+',  '+singleCar.address.state}">
+                                                            </span>
+                                                        </li>
+
+
+
+
+                                                        <li>
+                                                            Total seats						                                        <span class="pull-right">
+                                                            <span th:text="${singleCar.seat}"></span>					                                        </span>
+                                                        </li>
+
+
+
+                                                        <li>
+                                                            Gear: 					                                        <span class="pull-right">
+                                                            <span th:text="${singleCar.gear}"></span>					                                        </span>
+                                                        </li>
+
+
+
+                                                        <li>
+                                                            Available From:					                                        <span class="pull-right">
+                                                            <span th:text="${singleCar.available_from}"></span>						                                        </span>
+                                                        </li>
+
+                                                        <li>
+                                                            Last Service Date:				                                        <span class="pull-right" th:text="${singleCar.lastServiceDate}">
+                                                            1						                                        </span>
+                                                        </li>
+
+
+                                                    </ul>
+
+                                                </div><!-- /.apartment-overview -->
+                                            </div><!-- /.col-md-12 -->
+                                        </div><!-- /.row -->
+                                    </div><!-- /.overview -->
+
+
+                                </div><!-- /.family-apartment-content -->
+                                <div class="hidden-md hidden-lg text-center extend-btn">
+                                    <span class="extend-icon">
+                                        <i class="fa fa-angle-down"></i>
+                                    </span>
+                                </div>
+                            </div> <!-- /.col-md-8 -->
+
+                            <div class="col-md-4">
+                                <div class="apartment-sidebar">
+
+                                    <div class="widget_rental_search clerafix">
+                                        <div class="form-border gradient-border">
+                                            <form th:action="@{/rentItem}" method="post" class="advance_search_query booking-form" th:object="${rent}">
+                                                <div class="form-bg seven">
+                                                    <div class="form-content">
+                                                        <h2 class="form-title">Rent This Car</h2>
+                                                        <input type="hidden" name="accessoriesId" th:value="1" />
+                                                        <input   type="hidden" name="price" th:value="${singleCar.price_per_day}"/>
+                                                        <input type="hidden" name="customerId" th:value="${session.user.id}" th:unless="${session.user==null}"/>
+                                                        <!--                                            <div class="form-group">-->
+                                                        <!--                                                <label>Full Name</label>-->
+                                                        <!--                                                <input type="text" name="full_name" placeholder="Full name">-->
+                                                        <!--                                            </div>-->
+                                                        <!--                                            <div class="form-group">-->
+                                                        <!--                                                <label>Phone Number</label>-->
+                                                        <!--                                                <input type="tel" name="phone_number" placeholder="+99(99)9999-9999">-->
+                                                        <!--                                            </div>-->
+                                                        <!--                                            <div class="form-group">-->
+                                                        <!--                                                <label>Email Address</label>-->
+                                                        <!--                                                <input type="email" name="email" placeholder="example@domain.com">-->
+                                                        <!--                                            </div>-->
+
+                                                        <div class="form-group min-price">
+                                                            <label>Rent From</label>
+                                                            <input id="rental_date_from"  class="datepicker check-in" type="date" name="rentFrom">
+                                                        </div><!-- /.form-group -->
+
+                                                        <div class="form-group max-price">
+                                                            <label>Rent To</label>
+                                                            <input id="rental_date_to" class="datepicker check-out" type="date" name="rentTo">
+                                                        </div><!-- /.form-group -->
+                                                        <!--
+                                                                                        <div class="form-group">
+                                                            <label>Family Member</label>
+                                                            <input type="number" step="1" min="1" max="100" name="family_member" value="1" size="4" class="input-text">
+                                                        </div>
+                                                                                                                        <div class="form-group">
+                                                            <label>Children</label>
+                                                            <input type="number" step="1" min="0" max="100" name="children" value="1" size="4" class="input-text">
+                                                        </div> -->
+                                                        <div class="form-group">
+                                                            <label>Your Message</label>
+                                                            <textarea name="message" placeholder="Message" class="form-controller"></textarea>
+                                                        </div><!-- /.form-group -->
+                                                        <div class="form-group">
+                                                            <button type="submit" class="button default-template-gradient button-radius">Request Booking</button>
+                                                        </div><!-- /.form-group -->
+                                                    </div><!-- /.form-content -->
+                                                </div><!-- /.form-bg -->
+                                            </form> <!-- /.advance_search_query -->
+                                        </div><!-- /.form-border -->
+                                    </div><!-- /.widget_rental_search -->
+
+
+
+                                </div><!-- /.apartment-sidebar -->
+                            </div> <!-- .col-md-4 -->
+                        </div> <!-- /.row -->
+                    </div> <!-- /.container -->
+                </div>
+
+            </th:block>
+
+
+            <script>
+
+                alert();
+                $("#rental_date_from").datepicker({
+                onSelect: function(dateText, inst) {
+                var start = $(this).val();
+                }
+                });
+                $("#rental_date_to").datepicker({
+                onSelect: function(dateText, inst) {
+                var end = $(this).val();
+                var diff = new Date(end - start);
+
+                // get days
+                var days = diff/1000/60/60/24;
+                alert(days);
+                }
+                });
+                // var start = $('#rental_date_from').val();
+                // var end = $('#rental_date_to').val();
+
+                // end - start returns difference in milliseconds
+
+            </script>
+
+
+            <footer class="footer-area" style="background-image:url(/images/footer-bg.png ); background-color: #ffffff">
+            <footer class="container">
+                <div class="row">
+                    <div class="widget-area sidebar-footer-1 col-sm-6 col-md-col-sm-4 col-md-4">
+                        <div id="houserent_about_me-2" class="widget widget_houserent_about_me"><div class="widget-title-area"><h3 class="widget-title" style="color: #fca22a">About Us</h3></div>
+
+                            <div class="widget-about-content">
+                                <img th:src="@{/images/footer-logo.png}" alt="About Us">                <p>Renting, also known as hiring or letting, is an agreement where a payment is made for the temporary use of a good, service or property owned by another. A gross lease is when the tenant pays a flat rental amount and the landlord pays for all property charges regularly incurred by the ownership.</p>                <a href='#' class='button'>More</a>            </div><!-- /.widget-content -->
+                        </div>                                    </div>
+                    <div class="widget-area sidebar-footer-2 col-sm-6 col-md-col-sm-6 col-md-col-sm-4 col-md-4">
+                        <div id="houserent_rental_category-3" class="widget widget_houserent_rental_category"><div class="widget-title-area"><h3 class="widget-title" style="color: #fca22a">Place Category</h3></div>                                  <ul>
+                            <li>
+                                Flat for Rent
+                                <a href="#">
+                                    Apartments                              </a>
+                            </li>
+                            <li>
+                                Flat for Rent
+                                <a href="#">
+                                    Factory                             </a>
+                            </li>
+                            <li>
+                                Flat for Rent
+                                <a href="#">
+                                    Family House                                </a>
+                            </li>
+                            <li>
+                                Flat for Rent
+                                <a href="#">
+                                    Office                              </a>
+                            </li>
+                            <li>
+                                Flat for Rent
+                                <a href="#">
+                                    Sublet                              </a>
+                            </li>
+                            <li>
+                                Flat for Rent
+                                <a href="#">
+                                    Ware House                              </a>
+                            </li>
+                        </ul>
+                        </div>                                    </div>
+
+
+
+                </div><!-- /.container -->
+
+            </footer>
+            <th:block layout:fragment="footer"></th:block>
+
+        </body>
+    </html>

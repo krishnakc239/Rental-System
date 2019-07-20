@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/common/masterlayout}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+
+    <div class="page-content">
+        <div class="page-builder-content"><div class="fw-page-builder-content"><div class="fw-main-row " style="" >
+            <div class="fw-container-fluid pd-zero">
+                <div class="fw-row">
+                    <div class="fw-col-xs-12">
+                        <div class="form-block-content" style="background: #21b75f;background: -moz-linear-gradient(left, #21b75f 0%, #31386e 100%);background: -webkit-linear-gradient(left, #21b75f 0%, #31386e 100%);background: linear-gradient(to right, #21b75f 0%, #31386e 100%);">
+                            <!-- ======form-area======= -->
+                            <div class="form-area form-five">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form role="search" method="post" class="advance_search_query" th:action="@{/checkAvailability1}" th:object="${searchFilter}">
+                                                <div class="form-bg border-radius">
+                                                    <div class="form-content">
+                                                        <div class="form-group living-area">
+                                                            <label>Zip Code</label>
+                                                            <input class="tags search-field" type="text" th:value="${searchFilter.zipcode}" name="zipcode" placeholder="Where do you want to Search?">
+                                                            <input type="hidden" name="post_type" value="rental" />
+                                                        </div><!-- /.form-group -->
+
+
+
+
+                                                        <div class="form-group category-type" th:object="${category}">
+                                                            <label>Category</label>
+                                                            <select name="category" id="category">
+                                                                <option th:each="cat: ${category}" th:value="${cat.id}" th:text="${cat.name}"></option>
+<!--                                                                <option value="apartments">Apartments</option>-->
+<!--                                                                <option value="factory">Hotel</option>-->
+
+                                                            </select>
+                                                        </div><!-- /.form-group -->
+
+                                                        <div class="form-group min-price">
+                                                            <label>Price Range</label>
+                                                            <input type="text" th:value="${searchFilter.min_price}" name="min_price" placeholder="Ex - 200">
+                                                        </div><!-- /.form-group -->
+                                                        <div class="form-group max-price">
+                                                            <label class="invisible">Price Range</label>
+                                                            <input type="text" th:value="${searchFilter.max_price}" name="max_price" placeholder="Ex - 5000">
+                                                        </div><!-- /.form-group -->
+
+                                                        <div class="form-group">
+                                                            <button type="submit" class=" button nevy-button availity-button">Check Availability</button>
+                                                        </div><!-- /.form-group -->
+                                                    </div><!-- /.form-content -->
+                                                </div><!-- /.form-bg -->
+                                            </form> <!-- /.advance_search_query -->
+                                            <h4 class="form-bottom-title text-center"><span>Good Service is our passion</span></h4>
+                                        </div><!-- /.col-md-12 -->
+                                    </div><!-- /.row -->
+                                </div><!-- /.container -->
+                            </div><!-- /.form-area -->
+                        </div><!-- /.form-block-content -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+            <div class="fw-main-row " style="" >
+                <div class="fw-container-fluid pd-zero">
+                    <div class="fw-row">
+                        <div class="fw-col-xs-12">
+                            <!-- ====== Category Area ====== -->
+                            <div class="category-menu four default-template-gradient" style="background: #21b75f;background: -moz-linear-gradient(left, #21b75f 0%, #31386e 100%);background: -webkit-linear-gradient(left, #21b75f 0%, #31386e 100%);background: linear-gradient(to right, #21b75f 0%, #31386e 100%);">
+                                <div class="container-fluid pd-zero">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="category-menu-content">
+
+                                                <div class="category-slider bg-white-smoke owl-carousel">
+                                                    <div class="item">
+                                                        <div class="category-list style-one">
+                                                            <a href="/rental_cat/family-house/">
+                                                                <img class="icon-image" th:src="@{/images/category-one.png}" alt="Family House" />
+                                                                <h4>Family House</h4>
+                                                            </a>
+                                                        </div><!-- /.category-list -->
+                                                    </div><!-- /.item -->
+                                                    <div class="item">
+                                                        <div class="category-list style-one">
+                                                            <a href="/rental_cat/apartments/">
+                                                                <img class="icon-image" th:src="@{/images/category-two.png}" alt="Apartment" />
+                                                                <h4>Apartment</h4>
+                                                            </a>
+                                                        </div><!-- /.category-list -->
+                                                    </div><!-- /.item -->
+                                                    <div class="item">
+                                                        <div class="category-list style-one">
+                                                            <a href="/rental_cat/sublet/">
+                                                                <img class="icon-image" th:src="@{/images/category-three.png}" alt="Sublet" />
+                                                                <h4>Sublet</h4>
+                                                            </a>
+                                                        </div><!-- /.category-list -->
+                                                    </div><!-- /.item -->
+                                                    <div class="item">
+                                                        <div class="category-list style-one">
+                                                            <a href="/rental_cat/apartments/">
+                                                                <img class="icon-image" th:src="@{/images/category-four.png}" alt="Bachelor Mess" />
+                                                                <h4>Bachelor Mess</h4>
+                                                            </a>
+                                                        </div><!-- /.category-list -->
+                                                    </div><!-- /.item -->
+                                                    <div class="item">
+                                                        <div class="category-list style-one">
+                                                            <a href="/rental_cat/apartments/">
+                                                                <img class="icon-image" th:src="@{/images/category-five.png}" alt="Office" />
+                                                                <h4>Office</h4>
+                                                            </a>
+                                                        </div><!-- /.category-list -->
+                                                    </div><!-- /.item -->
+                                                    <div class="item">
+                                                        <div class="category-list style-one">
+                                                            <a href="/rental_cat/apartments/">
+                                                                <img class="icon-image" th:src="@{/images/category-six.png}" alt="Garage" />
+                                                                <h4>Garage</h4>
+                                                            </a>
+                                                        </div><!-- /.category-list -->
+                                                    </div><!-- /.item -->
+                                                    <div class="item">
+                                                        <div class="category-list style-one">
+                                                            <a href="/rental_cat/apartments/">
+                                                                <img class="icon-image" th:src="@{/images/category-two.png}" alt="Factory" />
+                                                                <h4>Factory</h4>
+                                                            </a>
+                                                        </div><!-- /.category-list -->
+                                                    </div><!-- /.item -->
+                                                    <div class="item">
+                                                        <div class="category-list style-one">
+                                                            <a href="/rental_cat/apartments/">
+                                                                <img class="icon-image" th:src="@{/images/category-eight.png}" alt="Hall Room" />
+                                                                <h4>Hall Room</h4>
+                                                            </a>
+                                                        </div><!-- /.category-list -->
+                                                    </div><!-- /.item -->
+                                                    <div class="item">
+                                                        <div class="category-list style-one">
+                                                            <a href="/rental_cat/apartments/">
+                                                                <i class="fa fa-home"></i>
+                                                                <h4>Warehouse</h4>
+                                                            </a>
+                                                        </div><!-- /.category-list -->
+                                                    </div><!-- /.item -->
+                                                    <div class="item">
+                                                        <div class="category-list style-one">
+                                                            <a href="/rental_cat/apartments/">
+                                                                <i class="linecons linecons-shop"></i>
+                                                                <h4>Shop </h4>
+                                                            </a>
+                                                        </div><!-- /.category-list -->
+                                                    </div><!-- /.item -->
+                                                    <div class="item">
+                                                        <div class="category-list style-one">
+                                                            <a href="/rental_cat/apartments/">
+                                                                <i class="unycon unycon-building6"></i>
+                                                                <h4>Commercial Space</h4>
+                                                            </a>
+                                                        </div><!-- /.category-list -->
+                                                    </div><!-- /.item -->
+                                                    <div class="item">
+                                                        <div class="category-list style-one">
+                                                            <a href="/rental_cat/apartments/">
+                                                                <i class="unycon unycon-building5"></i>
+                                                                <h4>Hospital Space</h4>
+                                                            </a>
+                                                        </div><!-- /.category-list -->
+                                                    </div><!-- /.item -->
+                                                    <div class="item">
+                                                        <div class="category-list style-one">
+                                                            <a href="/rental_cat/apartments/">
+                                                                <i class="unycon unycon-home"></i>
+                                                                <h4>School Space</h4>
+                                                            </a>
+                                                        </div><!-- /.category-list -->
+                                                    </div><!-- /.item -->
+
+                                                </div><!-- /.category-slider -->
+                                            </div><!-- /.category-menu-content -->
+                                        </div> <!-- category-menu -->
+                                    </div><!-- /.col-md-12 -->
+                                </div><!-- /.row -->
+                            </div><!-- /.catagory-menu -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        </div>      </div>
+
+    <footer class="footer-area" style="background-image:url(/images/footer-bg.png ); background-color: #ffffff">
+        <footer class="container">
+            <div class="row">
+                <div class="widget-area sidebar-footer-1 col-sm-6 col-md-col-sm-4 col-md-4">
+                    <div id="houserent_about_me-2" class="widget widget_houserent_about_me"><div class="widget-title-area"><h3 class="widget-title" style="color: #fca22a">About Us</h3></div>
+
+                        <div class="widget-about-content">
+                            <img th:src="@{/images/footer-logo.png}" alt="About Us">                <p>Renting, also known as hiring or letting, is an agreement where a payment is made for the temporary use of a good, service or property owned by another. A gross lease is when the tenant pays a flat rental amount and the landlord pays for all property charges regularly incurred by the ownership.</p>                <a href='#' class='button'>More</a>            </div><!-- /.widget-content -->
+                    </div>                                    </div>
+                <div class="widget-area sidebar-footer-2 col-sm-6 col-md-col-sm-6 col-md-col-sm-4 col-md-4">
+                    <div id="houserent_rental_category-3" class="widget widget_houserent_rental_category"><div class="widget-title-area"><h3 class="widget-title" style="color: #fca22a">Place Category</h3></div>                                  <ul>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Apartments                              </a>
+                        </li>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Factory                             </a>
+                        </li>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Family House                                </a>
+                        </li>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Office                              </a>
+                        </li>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Sublet                              </a>
+                        </li>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Ware House                              </a>
+                        </li>
+                    </ul>
+                    </div>                                    </div>
+
+
+
+            </div><!-- /.container -->
+
+    </footer>
+
+    </footer>
+</th:block>
+
+
+<th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>

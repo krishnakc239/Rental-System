@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/common/masterlayout}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div>
+        <span style="font-size: 1.5em">List of cars</span>
+
+    </div>
+    <p>&nbsp;</p>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Car Name</th>
+            <th scope="col">Model</th>
+            <th scope="col">Make</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <p>
+
+        </p>
+
+        <tr class="datarow" th:each="car,iterStat : ${cars}"   >
+            <th scope="row" th:text="${iterStat.count}+'.'"></th>
+            <td th:text="${car.name}"></td>
+            <td th:text="${car.model}"></td>
+
+            <td th:text="${car.make}"></td>
+        </tr>
+        </tbody>
+    </table>
+</th:block>
+
+<!--<th:block layout:fragment="footer"></th:block>-->
+
+</body>
+</html>

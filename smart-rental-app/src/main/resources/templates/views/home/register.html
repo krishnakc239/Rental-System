@@ -1,0 +1,114 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/common/masterlayout}">
+<html lang="en">
+<head></head>
+<body>
+<th:block layout:fragment="content">
+    <form th:action="@{/checkRegister}" method="post" th:object="${user}" class="col-md-10">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="fname">First Name</label>
+                <input type="text" th:field="${user.firstName}" class="form-control" id="fname" placeholder="First Name">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="mname">Middle Name</label>
+                <input type="text" th:field="${user.middleName}"class="form-control" id="mname" placeholder="Middle Name">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="lname">Last Name</label>
+                <input type="text" th:field="${user.lastName}"class="form-control" id="lname" placeholder="Last Name">
+            </div>
+
+        </div>
+        <div class="form-row" >
+            <div class="form-group col-md-4">
+                <label for="email">Email</label>
+                <input type="text" th:field="${user.email}" class="form-control" id="email" placeholder="email@gmail.com">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="age">Age</label>
+                <input type="number" th:field="${user.age}" class="form-control" id="age" placeholder="Age">
+            </div>
+            <div class="form-group col-md-4">
+                <div class="form-row col-md-6">
+                    <label>Role</label>
+                </div>
+                <div class="form-row col-md-6">
+                    <select th:field="${user.role}" class="dropdown" >
+                        <option th:value="'USER'" th:text="User"></option>
+                        <option th:value="'VENDOR'" th:text="Vendor"></option>
+                    </select>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="form-row ">
+            <div class="form-group col-md-6">
+                <label for="username">User Name</label>
+                <input type="text" th:field="${user.username}" class="form-control" id="username" placeholder="User Name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="password">Password</label>
+                <input type="password" th:field="${user.password}" class="form-control" id="password" placeholder="Password">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="country">Country</label>
+                <input type="text" th:field="${user.country}" class="form-control" id="country" placeholder="country">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputCity">City</label>
+                <input type="text" th:field="${user.city}" class="form-control" id="inputCity" placeholder="city">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="state">State</label>
+                <input type="text" th:field="${user.state}" class="form-control" id="state" placeholder="state">
+
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="street">Street</label>
+                    <input type="text" th:field="${user.street}" class="form-control" id="street" placeholder="street">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" th:field="${user.zip}" class="form-control" id="inputZip" placeholder="zip">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="phone">Contact</label>
+                    <input type="text" th:field="${user.phone}" class="form-control" id="phone" placeholder="contact number">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="mailBox">Mail Box</label>
+                    <input type="text" th:field="${user.mailBox}" class="form-control" id="mailBox" placeholder="mailBox">
+                </div>
+            </div>
+
+
+
+        </div>
+    <div class="form-row">
+        <div class="form-row col-md-6">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    Check me out
+                </label>
+            </div>
+        </div>
+        <div class="form-row col-md-6">
+            <button type="submit" class="btn btn-primary">register</button>
+            <label class="error" th:text="${message}"></label>
+        </div>
+    </div>
+
+
+
+    </form>
+</th:block>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/common/masterlayout}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Form</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="table table-wrapper">
+    <form action="#" th:action="@{/update/{type}/{id}(type ='APARTMENT',id=${apartment.id})}" th:object="${apartment}" method="post">
+        <div >
+            <select th:field="${apartment.category}" class="dropdown" >
+                <option th:value="'CAR'" th:text="Car" th:default="'CAR'"></option>
+                <option th:value="'APARTMENT'" th:text="Apartment"></option>
+                <option th:value="'HOTEL'" th:text="Hotel"></option>
+            </select>
+        </div>
+        <label for="name">Name</label>
+        <input type="text" th:field="*{name}" id="name" placeholder="Name">
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+        <label for="rentPerMonth">Rent Per Month</label>
+        <input type="text" th:field="*{rentPerMonth}" id="rentPerMonth" placeholder="rentPerMonth">
+        <span th:if="${#fields.hasErrors('rentPerMonth')}" th:errors="*{rentPerMonth}"></span>
+        <label for="vendorId">Vendor ID</label>
+        <input type="number" id="vendorId" th:name="vendorId" th:value="${session.user.id}" th:unless="${session.user == null}">
+        <span th:if="${#fields.hasErrors('vendorId')}" th:errors="*{vendorId}"></span>
+
+        <label for="description">Description</label>
+        <input type="text" th:field="*{description}" id="description" placeholder="description">
+        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+        <label for="country">Country</label>
+        <input type="text" th:field="*{country}" id="country" placeholder="country">
+        <span th:if="${#fields.hasErrors('country')}" th:errors="*{country}">
+
+    </span>    <label for="state">State</label>
+        <input type="text" th:field="*{state}" id="state" placeholder="state">
+        <span th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></span>
+        <label for="city">city</label>
+        <input type="text" th:field="*{city}" id="city" placeholder="city">
+        <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
+
+        <label for="street">Street</label>
+        <input type="text" th:field="*{street}" id="street" placeholder="street">
+        <span th:if="${#fields.hasErrors('street')}" th:errors="*{street}"></span>
+
+
+        <label for="zip">Zip</label>
+        <input type="text" th:field="*{zip}" id="zip" placeholder="zip">
+        <span th:if="${#fields.hasErrors('zip')}" th:errors="*{zip}"></span>
+        <label for="contact">Contact</label>
+        <input type="text" th:field="*{contact}" id="contact" placeholder="contact">
+        <span th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}"></span>
+        <input type="submit" value="Update">
+    </form>
+    </div>
+</th:block>
+</body>
+</html>

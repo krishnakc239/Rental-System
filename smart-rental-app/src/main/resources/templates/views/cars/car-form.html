@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/common/masterlayout}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Form</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <form th:action="@{/addNew/{type}(type ='CAR')}" th:object="${car}" method="post" class="table table-wrapper">
+       <div class="div-row">
+           <div class="div-group col-md-4">
+               <div >
+                   <select th:field="${car.category}" class="dropdown" >
+                       <option th:value="'CAR'" th:text="Car" th:default="'CAR'"></option>
+                       <option th:value="'APARTMENT'" th:text="Apartment"></option>
+                       <option th:value="'HOTEL'" th:text="Hotel"></option>
+                   </select>
+               </div>
+           </div>
+           <div class="div-group col-md-4">
+               <label  for="name">Name</label>
+               <input class="input-sm"   type="text" th:field="*{name}" id="name" placeholder="Name">
+               <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+           </div>  <div class="div-group col-md-4">
+           <label for="vendorId">Vendor ID</label>
+           <input class="input-sm"  type="number" id="vendorId" th:name="vendorId" th:value="${session.user.id}" th:unless="${session.user == null}">
+           <span th:if="${#fields.hasErrors('vendorId')}" th:errors="*{vendorId}"></span>
+
+       </div>
+       </div>
+        <div class="div-row">
+           <div class="div-group col-md-4">
+               <label for="model">model</label>
+               <input class="input-sm"  type="text" th:field="*{model}" id="model" placeholder="model">
+               <span th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></span>
+           </div>  <div class="div-group col-md-4">
+
+            <label for="make">make</label>
+            <input class="input-sm"  type="text" th:field="*{make}" id="make" placeholder="make">
+            <span th:if="${#fields.hasErrors('make')}" th:errors="*{make}"></span>
+
+        </div>  <div class="div-group col-md-4">
+            <label for="year">year</label>
+            <input class="input-sm"  type="date" th:field="*{year}" id="year" placeholder="year">
+            <span th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span>
+
+        </div>
+       </div>
+        <div class="div-row">
+           <div class="div-group col-md-4">
+
+               <label for="lastServiceDate">Last Service Date</label>
+               <input class="input-sm"  type="date" th:field="*{lastServiceDate}" id="lastServiceDate" placeholder="lastServiceDate">
+               <span th:if="${#fields.hasErrors('lastServiceDate')}" th:errors="*{lastServiceDate}"></span>
+
+           </div>  <div class="div-group col-md-4">
+
+        <label for="registrationNumber">Registration Number</label>
+        <input class="input-sm"  type="number" th:field="*{registrationNumber}" id="registrationNumber" placeholder="registrationNumber">
+        <span th:if="${#fields.hasErrors('registrationNumber')}" th:errors="*{registrationNumber}"></span>
+
+    </div>
+        <div class="div-group col-md-4">
+            <label for="price_per_day">price_per_day</label>
+            <input class="input-sm"  type="number" th:field="*{price_per_day}" id="price_per_day" placeholder="price_per_day">
+            <span th:if="${#fields.hasErrors('price_per_day')}" th:errors="*{price_per_day}"></span>
+
+        </div>
+       </div>
+        <div class="div-row">
+            <div class="div-group col-md-4">
+
+                <label for="description">Description</label>
+                <input class="input-sm"  type="text" th:field="*{description}" id="description" placeholder="description">
+                <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+            </div> <div class="div-group col-md-4">
+            <label for="gear">Gear</label>
+            <input class="input-sm"  type="text" th:field="*{gear}" id="gear" placeholder="gear">
+            <span th:if="${#fields.hasErrors('gear')}" th:errors="*{gear}"></span>
+
+        </div> <div class="div-group col-md-4">
+
+            <label for="seat">Seat</label>
+            <input class="input-sm"  type="number" th:field="*{seat}" id="seat" placeholder="seat">
+            <span th:if="${#fields.hasErrors('seat')}" th:errors="*{seat}"></span>
+
+        </div>
+        </div>
+        <div class="div-row">
+            <div class="div-group col-md-4">
+                <label for="image_url">Image Url</label>
+                <input class="input-sm"  type="text" th:field="*{image_url}" id="image_url" placeholder="image_url">
+                <span th:if="${#fields.hasErrors('image_url')}" th:errors="*{image_url}"></span>
+
+            </div> <div class="div-group col-md-4">
+        <label for="available_from">Available From</label>
+        <input class="input-sm"  type="date" th:field="*{available_from}" id="available_from" placeholder="available_from">
+        <span th:if="${#fields.hasErrors('available_from')}" th:errors="*{available_from}"></span>
+
+    </div>
+        <div class="div-group col-md-4">
+        <label for="service_charge">Service Charge</label>
+        <input class="input-sm"  type="number" th:field="*{service_charge}" id="service_charge" placeholder="service_charge">
+        <span th:if="${#fields.hasErrors('service_charge')}" th:errors="*{service_charge}"></span>
+
+    </div>
+        </div>
+        <div class="div-row">
+            <div class="div-group col-md-4">
+                <label for="security_deposit">security Deposit</label>
+                <input class="input-sm"  type="number" th:field="*{security_deposit}" id="security_deposit" placeholder="security_deposit">
+                <span th:if="${#fields.hasErrors('security_deposit')}" th:errors="*{security_deposit}"></span>
+
+            </div>
+        <div class="div-group col-md-4">
+
+        <label for="address.state">State</label>
+        <input class="input-sm"  type="text" th:field="*{address.state}" id="address.state" placeholder="state">
+        <span th:if="${#fields.hasErrors('address.state')}" th:errors="*{address.state}"></span>
+
+    </div>
+        <div class="div-group col-md-4">
+        <label for="address.city">city</label>
+        <input class="input-sm"  type="text" th:field="*{address.city}" id="address.city" placeholder="city">
+        <span th:if="${#fields.hasErrors('address.city')}" th:errors="*{address.city}"></span>
+
+    </div>
+        </div>
+        <div class="div-row">
+
+            <div class="div-group col-md-4">
+
+                <label for="address.street">Street</label>
+                <input class="input-sm"  type="text" th:field="*{address.street}" id="address.street" placeholder="street">
+                <span th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}"></span>
+
+            </div>  <div class="div-group col-md-4">
+
+            <label for="address.zip">Zip</label>
+            <input class="input-sm"  type="text" th:field="*{address.zip}" id="address.zip" placeholder="zip">
+            <span th:if="${#fields.hasErrors('address.zip')}" th:errors="*{address.zip}"></span>
+
+        </div>  <div class="div-group col-md-4">
+            <label for="contact">Contact</label>
+            <input class="input-sm"  type="text" th:field="*{contact}" id="contact" placeholder="contact">
+            <span th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}"></span>
+
+        </div>
+        </div>
+        <div class="div-row">
+        <div class="div-group col-md-4">
+
+            <label for="rent_policy">Rent Policy</label>
+            <input class="input-sm"  type="text" th:field="*{rent_policy}" id="rent_policy" placeholder="rent_policy">
+            <span th:if="${#fields.hasErrors('rent_policy')}" th:errors="*{rent_policy}"></span>
+        </div>
+        <div class="div-group col-md-4">
+
+
+
+        </div>
+    </div>
+        <input type="submit" value="Add Car">
+
+</form>
+</th:block>
+</body>
+</html>

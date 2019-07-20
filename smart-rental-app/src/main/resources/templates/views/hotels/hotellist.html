@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/common/masterlayout}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+
+    <!-- ======hotels-area======== -->
+    <div class="apartments-area four bg-gray-color" th:object="${hotels}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="apartment-tab-area">
+
+
+
+
+                        <div class="tab-content">
+                            <ul role="tablist" class="nav nav-tabs apartment-menu hidden-xs hidden-sm">
+                                <!--   <li class="active">
+                                      <a href="#popular-apartment" role="tab" data-toggle="tab">
+                                      Popular                                </a>
+                                  </li> -->
+                                <li>
+                                    <a href="#newest-to-oldest" role="tab" data-toggle="tab">
+                                        Date                                    <span>Newest to oldest</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#oldest-to-newest" role="tab" data-toggle="tab">
+                                        Date                                    <span>Older to newest</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#price-height-to-low" role="tab" data-toggle="tab">
+                                        Price                                    <span>Low to high</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#price-low-to-heigh" role="tab" data-toggle="tab">
+                                        Price                                    <span>high to low</span>
+                                    </a>
+                                </li>
+                                <li class="pull-right">
+                                    <a href="#" role="tab" class="dropdown-toggle" data-toggle="dropdown">Category<i class="fa fa-angle-down"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="?cat=cars">cars</a></li>
+                                        <li><a href="?cat=apartments">Apartments</a></li>
+                                        <li><a href="?cat=hotels">Hotel</a></li>
+
+
+                                    </ul>
+                                </li><!-- /.pull-right -->
+                            </ul>
+
+                            <div class="hidden-md hidden-lg">
+                                <select class="apartment-menu-mobile">
+                                    <!-- <option value='0'>Popular</option> -->
+                                    <option value='1'>
+                                        Date                                    <span>Newest to oldest</span>
+                                    </option>
+                                    <option value='2'>
+                                        Date                                    <span>Older to newest</span>
+                                    </option>
+                                    <option value='3'>
+                                        Price                                    <span>Low to high</span>
+                                    </option>
+                                    <option value='4'>
+                                        Price                                    <span>high to low</span>
+                                    </option>
+                                    <optgroup label="Category">
+                                        <option value='#'>all</option>
+                                        <option value='#'>Apartments</option>
+                                        <option value='#'>Factory</option>
+
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                            <div th:if="${msg}">
+                                <div class="alert alert-info" role="alert" th:text="${msg}">
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4 col-sm-6" th:each="hotel,iterStat : ${hotels}"   >
+                                <div class="apartments-content">
+
+                                    <div class="image-content">
+                                        <a th:href="${'/viewHotel/'+hotel.id}">
+                                            <img th:src="${hotel.image_url}"  alt=""/>
+                                        </a>
+                                    </div><!-- /.image-content -->
+
+                                    <div class="text-content">
+                                        <div class="top-content">
+                                            <h3><a th:href="${'/viewHotel/'+hotel.id}" th:text="${hotel.name}">Hotel Name</a></h3>
+                                            <span th:text="${hotel.address.state+', '+hotel.address.city}">
+<!--                   Iowa, Fairfield      -->
+                                            </span>
+
+                                            <span>
+                        <i class="fa fa-car"></i>
+
+                    </span>
+                                        </div><!-- /.top-content -->
+
+
+                                            <span class="clearfix"></span>
+                                            <div class="rent-price pull-left" th:text="${'$ '+hotel.price}+' Per Day'">
+<!--
+
+                                    </div><-- /.text-content -->
+                                </div><!-- /.partments-content -->
+                            </div><!-- /.col-md-4 -->
+
+
+
+
+                        </div><!-- /.tab-content -->
+                    </div><!-- /.apartment-tab-area -->
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+        <div class="price-low-ajax-load-more default-template-gradient text-center">
+            <a href="http://demo.softhopper.net/house-rent/rental-items/page/2/" >More Posts</a>                                    </div>
+    </div>
+    </div><!-- /.Apartments-area-->
+
+
+
+
+
+
+
+</th:block>
+
+
+<th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>

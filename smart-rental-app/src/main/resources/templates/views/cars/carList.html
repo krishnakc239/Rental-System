@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/common/masterlayout}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+
+    <!-- ======cars-area======== -->
+    <div class="apartments-area four bg-gray-color" th:object="${cars}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="apartment-tab-area">
+
+
+
+
+                        <div class="tab-content">
+                            <ul role="tablist" class="nav nav-tabs apartment-menu hidden-xs hidden-sm">
+                                <!--   <li class="active">
+                                      <a href="#popular-apartment" role="tab" data-toggle="tab">
+                                      Popular                                </a>
+                                  </li> -->
+                                <li>
+                                    <a href="#newest-to-oldest" role="tab" data-toggle="tab">
+                                        Date                                    <span>Newest to oldest</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#oldest-to-newest" role="tab" data-toggle="tab">
+                                        Date                                    <span>Older to newest</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#price-height-to-low" role="tab" data-toggle="tab">
+                                        Price                                    <span>Low to high</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#price-low-to-heigh" role="tab" data-toggle="tab">
+                                        Price                                    <span>high to low</span>
+                                    </a>
+                                </li>
+                                <li class="pull-right">
+                                    <a href="#" role="tab" class="dropdown-toggle" data-toggle="dropdown">Category<i class="fa fa-angle-down"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="?cat=cars">cars</a></li>
+                                        <li><a href="?cat=apartments">Apartments</a></li>
+                                        <li><a href="?cat=hotels">Hotel</a></li>
+
+
+                                    </ul>
+                                </li><!-- /.pull-right -->
+                            </ul>
+
+                            <div class="hidden-md hidden-lg">
+                                <select class="apartment-menu-mobile">
+                                    <!-- <option value='0'>Popular</option> -->
+                                    <option value='1'>
+                                        Date                                    <span>Newest to oldest</span>
+                                    </option>
+                                    <option value='2'>
+                                        Date                                    <span>Older to newest</span>
+                                    </option>
+                                    <option value='3'>
+                                        Price                                    <span>Low to high</span>
+                                    </option>
+                                    <option value='4'>
+                                        Price                                    <span>high to low</span>
+                                    </option>
+                                    <optgroup label="Category">
+                                        <option value='#'>all</option>
+                                        <option value='#'>Apartments</option>
+                                        <option value='#'>Factory</option>
+
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                            <div th:if="${msg}">
+                                <div class="alert alert-info" role="alert" th:text="${msg}">
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4 col-sm-6" th:each="car,iterStat : ${cars}"   >
+                                <div class="apartments-content">
+
+                                    <div class="image-content">
+                                        <a th:href="${'/viewCar/'+car.id}">
+                                            <img th:src="${car.image_url}"  alt="">                </a>
+                                    </div><!-- /.image-content -->
+
+                                    <div class="text-content">
+                                        <div class="top-content">
+                                            <h3><a href="#" th:text="${car.name}">Car Name</a></h3>
+                                            <span th:text="${car.address.state+', '+car.address.city}">
+                        <i class="fa fa-map-marker"></i>
+<!--                   Iowa, Fairfield      -->
+                                            </span>
+
+                                            <span>
+                        <i class="fa fa-car"></i>
+                        <a href="#">Last Service: <span th:text="${car.lastServiceDate}"></span></a>
+                    </span>
+                                        </div><!-- /.top-content -->
+
+                                        <div class="bottom-content clearfix">
+                                            <div class="meta-bed-room" th:text="${'Model : '+car.model}">
+                                                <i class="fa fa-bandcamp"></i>
+
+                                            </div>
+                                            <div class="meta-bath-room" th:text="${'Year '+car.year}">
+                                                <i class="fa fa-calendar"></i>
+                                                          </div>
+
+
+                                            <span class="clearfix"></span>
+                                            <div class="rent-price pull-left" th:text="${'$ '+car.price_per_day}+' Per Day'">
+<!--
+                                                <span> </span>
+                                            </div>
+                                            <div class="share-meta dropup pull-right">
+                                                <ul>
+                                                    <li class="dropup">
+                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-share-alt"></i></a>
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a class="customer share" rel="nofollow" title="Share on Facebook" href="#">
+                                                                    <i class="fa fa-facebook"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="customer share" rel="nofollow" title="Share on Twitter" href="#" >
+                                                                    <i class="fa fa-twitter"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="customer share" rel="nofollow" title="Share on GooglePlus" href="#" >
+                                                                    <i class="fa fa-google-plus"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="customer share" rel="nofollow" title="Share on Linkedin" href="#" >
+                                                                    <i class="fa fa-linkedin"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a rel="nofollow" title="Share on Pinterest" href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">
+                                                                    <i class="fa fa-pinterest-p"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+
+                                                        <i class="fa fa-star-o property-favorites" data-nonce="b3ed6efdf2" data-fav-id="157" data-type="add" data-placement="bottom" data-toggle="tooltip" data-original-title="Add To Favorites"></i>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div><!-- /.bottom-content -->
+                                    </div><!-- /.text-content -->
+                                </div><!-- /.partments-content -->
+                            </div><!-- /.col-md-4 -->
+
+
+
+
+                        </div><!-- /.tab-content -->
+                    </div><!-- /.apartment-tab-area -->
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+        <div class="price-low-ajax-load-more default-template-gradient text-center">
+            <a href="http://demo.softhopper.net/house-rent/rental-items/page/2/" >More Posts</a>                                    </div>
+    </div>
+    </div><!-- /.Apartments-area-->
+
+
+
+
+
+
+    <footer class="footer-area" style="background-image:url(/images/footer-bg.png ); background-color: #ffffff">
+        <footer class="container">
+            <div class="row">
+                <div class="widget-area sidebar-footer-1 col-sm-6 col-md-col-sm-4 col-md-4">
+                    <div id="houserent_about_me-2" class="widget widget_houserent_about_me"><div class="widget-title-area"><h3 class="widget-title" style="color: #fca22a">About Us</h3></div>
+
+                        <div class="widget-about-content">
+                            <img th:src="@{/images/footer-logo.png}" alt="About Us">                <p>Renting, also known as hiring or letting, is an agreement where a payment is made for the temporary use of a good, service or property owned by another. A gross lease is when the tenant pays a flat rental amount and the landlord pays for all property charges regularly incurred by the ownership.</p>                <a href='#' class='button'>More</a>            </div><!-- /.widget-content -->
+                    </div>                                    </div>
+                <div class="widget-area sidebar-footer-2 col-sm-6 col-md-col-sm-6 col-md-col-sm-4 col-md-4">
+                    <div id="houserent_rental_category-3" class="widget widget_houserent_rental_category"><div class="widget-title-area"><h3 class="widget-title" style="color: #fca22a">Place Category</h3></div>                                  <ul>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Apartments                              </a>
+                        </li>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Factory                             </a>
+                        </li>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Family House                                </a>
+                        </li>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Office                              </a>
+                        </li>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Sublet                              </a>
+                        </li>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Ware House                              </a>
+                        </li>
+                    </ul>
+                    </div>                                    </div>
+
+
+
+            </div><!-- /.container -->
+
+        </footer>
+
+
+
+
+
+</th:block>
+
+
+<th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>
